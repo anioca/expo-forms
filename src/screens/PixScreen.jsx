@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Surface, Text, Button, TextInput } from 'react-native-paper';
 import { View, StyleSheet } from 'react-native';
-import { getAuth } from 'firebase/auth'; // Use getAuth para evitar inicializar mais de uma vez
-//import AsyncStorage from '@react-native-async-storage/async-storage'; // Corrigido aqui
-import app from '../config/firebase'; // Certifique-se de que o caminho está correto
+import { getAuth } from 'firebase/auth'; 
+import app from '../config/firebase'; 
 
-const auth = getAuth(app); // Use getAuth para pegar a instância já existente
-
+const auth = getAuth(app); 
 export default function PixScreen({ navigation }) {
   const [pixAmount, setPixAmount] = useState('');
   const [pixType, setPixType] = useState('send'); 
   const [transactionStatus, setTransactionStatus] = useState(null);
   const [balance, setBalance] = useState(0); 
 
-  // Carregar saldo da storage local quando o componente é montado
+
   useEffect(() => {
     const loadBalance = async () => {
       try {
@@ -31,7 +29,7 @@ export default function PixScreen({ navigation }) {
     loadBalance();
   }, []);
 
-  // Função para lidar com transações Pix
+
   const handlePixTransaction = async () => {
     const amountValue = parseFloat(pixAmount);
     if (!isNaN(amountValue) && amountValue > 0) {

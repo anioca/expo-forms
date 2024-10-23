@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { Surface, Text, Button } from 'react-native-paper';
 import { View, StyleSheet, ScrollView } from 'react-native';
-//import AsyncStorage from '@react-native-async-storage/async-storage'; // Certifique-se de que está importado corretamente
-import { getAuth } from 'firebase/auth'; // Use getAuth para evitar inicializações duplicadas
-import app from '../config/firebase'; // Importação correta do Firebase
+import { getAuth } from 'firebase/auth'; 
+import app from '../config/firebase'; 
 
-const auth = getAuth(app); // Usando getAuth para evitar inicializações duplicadas
+const auth = getAuth(app); 
 
 export default function BankScreen({ navigation }) {
-  const [balance, setBalance] = useState(1356.00); // Saldo inicial inspirado na imagem
-  const [creditCardBalance, setCreditCardBalance] = useState(1094.80); // Fatura atual do cartão
-  const [creditCardLimit, setCreditCardLimit] = useState(730.00); // Limite disponível do cartão
-  const [depositAmount, setDepositAmount] = useState(''); // Valor do depósito
-  const [withdrawAmount, setWithdrawAmount] = useState(''); // Valor do saque
+  const [balance, setBalance] = useState(1356.00); 
+  const [creditCardBalance, setCreditCardBalance] = useState(1094.80); 
+  const [creditCardLimit, setCreditCardLimit] = useState(730.00); 
+  const [depositAmount, setDepositAmount] = useState(''); 
+  const [withdrawAmount, setWithdrawAmount] = useState(''); 
 
   const handleDeposit = () => {
     const amount = parseFloat(depositAmount);
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
   },
   scrollViewContent: {
     padding: 20,
-    paddingBottom: 40, // Adiciona um pouco de espaço no final do conteúdo
+    paddingBottom: 40, 
   },
   header: {
     backgroundColor: '#5e2c80',

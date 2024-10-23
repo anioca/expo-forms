@@ -1,4 +1,3 @@
-// BalanceContext.js
 import React, { createContext, useState, useEffect } from 'react';
 
 
@@ -14,7 +13,7 @@ export const BalanceProvider = ({ children }) => {
         if (storedBalance !== null) {
           setBalance(parseFloat(storedBalance));
         } else {
-          setBalance(1356.00); // Saldo inicial padrão
+          setBalance(1356.00); 
         }
       } catch (error) {
         console.error('Erro ao carregar o saldo:', error);

@@ -29,7 +29,7 @@ export default function PaymentScreen({ navigation }) {
     loadBalance();
   }, []);
 
-  // Função para realizar o pagamento
+
   const handlePayment = async () => {
     const amountValue = parseFloat(paymentAmount);
     if (!isNaN(amountValue) && amountValue > 0 && amountValue <= balance && paymentDescription) {
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
   },
   header: {
-    backgroundColor: '#a547bf', // Cor atualizada
+    backgroundColor: '#a547bf',
     padding: 20,
     borderRadius: 10,
     marginBottom: 20,
@@ -117,11 +117,11 @@ const styles = StyleSheet.create({
   },
   button: {
     marginVertical: 10,
-    backgroundColor: '#a547bf', // Cor do botão
+    backgroundColor: '#a547bf', 
   },
   status: {
     marginVertical: 10,
-    color: '#a547bf', // Cor do status
+    color: '#a547bf', 
     textAlign: 'center',
   },
   balanceContainer: {
@@ -135,13 +135,13 @@ const styles = StyleSheet.create({
   balanceAmount: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#a547bf', // Cor do saldo
+    color: '#a547bf', 
   },
   bottomActions: {
     marginTop: 20,
     alignItems: 'center',
   },
   backButton: {
-    backgroundColor: '#a547bf', // Cor do botão "Voltar"
+    backgroundColor: '#a547bf', 
   },
 });

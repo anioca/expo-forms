@@ -5,7 +5,6 @@ import { styles } from "../config/styles";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 
-
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -27,7 +26,11 @@ export default function LoginScreen({ navigation }) {
     }
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        senha
+      );
       const user = userCredential.user;
       console.log("Usuário logado", user);
       navigation.navigate("HomeScreen");
@@ -37,10 +40,9 @@ export default function LoginScreen({ navigation }) {
   }
 
   // Função para login com Google
-  
 
   return (
-    <Surface style={styles.container}>
+    <Surface>
       <View style={styles.Containerlogo}>
         {/* Utilizar uma imagem no Expo ou uma alternativa apropriada */}
         <div>
@@ -53,7 +55,10 @@ export default function LoginScreen({ navigation }) {
       </View>
 
       <View style={styles.ContainerForm}>
-        <Text variant="headlineMedium" style={{ textAlign: "center", marginBottom: 20 }}>
+        <Text
+          variant="headlineMedium"
+          style={{ textAlign: "center", marginBottom: 20 }}
+        >
           Login
         </Text>
         <TextInput
@@ -72,12 +77,14 @@ export default function LoginScreen({ navigation }) {
           error={erro.senha}
         />
         <View>
-          <Button onPress={realizaLogin} mode="contained" style={{ backgroundColor: "#a547bf" }}>
+          <Button
+            onPress={realizaLogin}
+            mode="contained"
+            style={{ backgroundColor: "#a547bf" }}
+          >
             Fazer Login
           </Button>
         </View>
-
-       
 
         <Button
           onPress={() => navigation.navigate("RegisterScreen")}

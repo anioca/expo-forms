@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Surface, Text, Button, TextInput } from 'react-native-paper';
 import { View, StyleSheet } from 'react-native';
-import { getAuth } from 'firebase/auth'; // Use getAuth para evitar inicializar mais de uma vez
-//import AsyncStorage from '@react-native-async-storage/async-storage'; // Certifique-se de que está importado corretamente
-import app from '../config/firebase'; // Certifique-se de que o caminho está correto
+import { getAuth } from 'firebase/auth';
 
-const auth = getAuth(app); // Use getAuth para pegar a instância já existente
+import app from '../config/firebase';
+
+const auth = getAuth(app); 
 
 export default function TransferScreen({ navigation }) {
   const [recipient, setRecipient] = useState('');
   const [amount, setAmount] = useState('');
   const [transactionStatus, setTransactionStatus] = useState(null);
-  const [balance, setBalance] = useState(0); // Inicialmente 0, será carregado do AsyncStorage
+  const [balance, setBalance] = useState(0); 
 
-  // Carregar saldo da storage local quando o componente é montado
+
   useEffect(() => {
     const loadBalance = async () => {
       try {
@@ -21,7 +21,7 @@ export default function TransferScreen({ navigation }) {
         if (storedBalance !== null) {
           setBalance(parseFloat(storedBalance));
         } else {
-          setBalance(1356.00); // Saldo inicial padrão
+          setBalance(1356.00);
         }
       } catch (error) {
         console.error('Erro ao carregar o saldo:', error);
@@ -31,7 +31,7 @@ export default function TransferScreen({ navigation }) {
     loadBalance();
   }, []);
 
-  // Função para realizar a transferência
+
   const handleTransfer = async () => {
     const amountValue = parseFloat(amount);
     if (!isNaN(amountValue) && amountValue > 0 && amountValue <= balance && recipient) {

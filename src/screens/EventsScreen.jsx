@@ -39,6 +39,8 @@ export default function EventsScreen({ navigation }) {
   };
 
   const handleSubmit = () => {
+    console.log("handleSubmit foi chamado");
+  
     if (!eventName.trim() || !coverImage || !description.trim()) {
       Alert.alert('Erro', 'Por favor, preencha todos os campos e adicione uma imagem de capa.');
       return;
@@ -64,8 +66,10 @@ export default function EventsScreen({ navigation }) {
         <Text style={styles.title}>Eventos</Text>
 
         <Button mode="contained" onPress={pickImage} style={styles.imageButton}>
+
           {coverImage ? (
             <Image source={{ uri: coverImage }} style={styles.coverImage} />
+            
           ) : (
             <Text style={{ color: "#fff" }}>Selecionar Imagem de Capa</Text>
           )}
