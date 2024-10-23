@@ -22,18 +22,26 @@ export default function EventsScreen({ navigation }) {
   const hideDialog = () => setVisible(false);
 
   const pickImage = async () => {
+    // Request permission to access media library
+    const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+  
+    if (permissionResult.granted === false) {
+      Alert.alert("Permission to access camera roll is required!");
+      return;
+    }
+  
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
     });
-
+  
     if (!result.canceled) {
       if (coverImage === null) {
-        setCoverImage(result.uri);
+        setCoverImage(result.assets[0].uri); // Change to result.assets[0].uri for Expo SDK 44+
       } else {
-        setGallery([...gallery, result.uri]);
+        setGallery([...gallery, result.assets[0].uri]); // Change to result.assets[0].uri for Expo SDK 44+
       }
     }
   };

@@ -22,8 +22,8 @@ export const styles = StyleSheet.create({
   },
   img: {
     alignItems: "center",
-    width: "50%",
-    height: 50,
+    width: "500%",
+    height: 500,
   },
   ContainerForm: {
     flex: 1,

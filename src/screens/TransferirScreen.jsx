@@ -84,7 +84,7 @@ export default function TransferScreen({ navigation }) {
         <Text style={styles.balanceAmount}>R$ {balance.toFixed(2)}</Text>
       </View>
       <View style={styles.bottomActions}>
-        <Button mode="contained" onPress={() => navigation.goBack()}>
+        <Button mode="contained" onPress={() => navigation.goBack()} style={styles.button}>
           Voltar
         </Button>
       </View>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
   },
   header: {
-    backgroundColor: '#5e2c80',
+    backgroundColor: '#a547bf', // Cor alterada
     padding: 20,
     borderRadius: 10,
     marginBottom: 20,
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 10,
-    backgroundColor: '#5e2c80',
+    backgroundColor: '#a547bf', // Cor alterada
   },
   status: {
     marginTop: 20,
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginVertical: 20,
     borderWidth: 1,
-    borderColor: '#e0e0e0',
+    borderColor: '#a547bf', // Cor alterada
     alignItems: 'center',
   },
   balanceLabel: {
@@ -151,3 +151,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+

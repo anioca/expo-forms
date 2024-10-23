@@ -11,13 +11,10 @@ const PerfilScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.profileHeader}>
-        <Image
-          source={{
-            uri: require("../../assets/img/arraia.png"),
-          }}
+      <Image
+  source={require("../../assets/img/arraia.png")}
+/>
 
-          //style={styles.profileImage}
-        />
         <Title style={styles.username}>Senac Terceirão</Title>
         <Paragraph style={styles.bio}>Joinville - SC</Paragraph>
       </View>

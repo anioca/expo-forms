@@ -1,10 +1,9 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {getAuth, GoogleAuthProvider} from "firebase/auth";
-//import { initializeAuth, getReactNativePersistence } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-//import AsyncStorage from '@react-native-async-storage/async-storage'; // Certifique-se de instalar esse pacote
+import { getFirestore } from "firebase/firestore"; // Import Firestore
+import { getAuth } from "firebase/auth"; // Import Authentication
+import { getStorage } from "firebase/storage"; // Import Storage
 
-// Sua configuração do Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCoNPVeeCdG1WmyuUm9_R9T8MAyVSBRHSE",
   authDomain: "appunicforms.firebaseapp.com",
@@ -15,19 +14,10 @@ const firebaseConfig = {
   measurementId: "G-QZ66W8XL94"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app); 
+const db = getFirestore(app); 
+const storage = getStorage(app);
 
-// Inicialize o Firebase Auth com persistência no AsyncStorage (para React Native)
-//const auth = initializeAuth(app, {
-//  persistence: getReactNativePersistence(AsyncStorage)
-//});
-
-// Inicialize o Firestore
-// const db = getFirestore(app);
-
-export { auth, db };
-export {  db };
-export default app;
-const auth = getAuth(app)
-const provider = new GoogleAuthProvider();
-export{auth, provider};
+export { app, auth, db, storage };

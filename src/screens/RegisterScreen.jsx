@@ -1,8 +1,8 @@
-import { View, Image } from "react-native";
+import { View, Image, Alert } from "react-native";
 import { Button, Surface, Text, TextInput } from "react-native-paper";
 import { useState } from "react";
 import { styles } from "../config/styles";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../config/firebase";
 
 export default function RegisterScreen({ navigation }) {
@@ -50,6 +50,30 @@ export default function RegisterScreen({ navigation }) {
       navigation.navigate("HomeScreen");
     } catch (error) {
       console.error("Erro ao registrar:", error.message);
+      Alert.alert("Erro de Registro", "Não foi possível realizar o registro. Tente novamente.");
+    }
+  }
+
+  async function handleGoogleRegister() {
+    const provider = new GoogleAuthProvider();
+
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log("Usuário cadastrado com Google:", user);
+      navigation.navigate("HomeScreen"); // Navegar para a HomeScreen após o cadastro com Google
+    } catch (error) {
+      console.error("Erro ao cadastrar com Google:", error.message);
+      Alert.alert(
+        "Erro de Cadastro com Google",
+        "Não foi possível fazer o cadastro com sua conta Google. Você será redirecionado ao login.",
+        [
+          {
+            text: "OK",
+            onPress: () => navigation.navigate("LoginScreen"), // Redireciona para a tela de login
+          },
+        ]
+      );
     }
   }
 
@@ -104,7 +128,12 @@ export default function RegisterScreen({ navigation }) {
           <Button onPress={realizaRegistro} style={{ backgroundColor: "#a547bf" }} mode="outlined">
             Registrar
           </Button>
-          <Button onPress={() => navigation.navigate("LoginScreen")}>
+
+          <Button onPress={handleGoogleRegister} style={{ backgroundColor: "#db4437", marginTop: 10 }} mode="outlined">
+            Registrar com Google
+          </Button>
+
+          <Button onPress={() => navigation.navigate("LoginScreen")} style={{ marginTop: 20 }}>
             Voltar ao login
           </Button>
         </View>

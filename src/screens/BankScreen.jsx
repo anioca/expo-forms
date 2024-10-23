@@ -57,7 +57,7 @@ export default function BankScreen({ navigation }) {
           <Text style={styles.cardLimit}>Limite disponível: R$ {creditCardLimit.toFixed(2)}</Text>
         </View>
         <View style={styles.bottomActions}>
-          <Button onPress={() => navigation.navigate("HomeScreen")} mode="contained">
+          <Button onPress={() => navigation.navigate("HomeScreen")} mode="contained" style={styles.button}>
             Voltar
           </Button>
         </View>
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     paddingBottom: 40, 
   },
   header: {
-    backgroundColor: '#5e2c80',
+    backgroundColor: '#a547bf', // Cor alterada
     padding: 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -139,4 +139,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     alignItems: 'center',
   },
+  button: {
+    backgroundColor: '#a547bf', // Cor alterada
+  },
 });
+

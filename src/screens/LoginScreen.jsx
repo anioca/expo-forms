@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, Alert } from "react-native";
 import { Button, Surface, Text, TextInput } from "react-native-paper";
 import { styles } from "../config/styles";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../config/firebase";
 
 export default function LoginScreen({ navigation }) {
@@ -26,30 +26,40 @@ export default function LoginScreen({ navigation }) {
     }
 
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        senha
-      );
+      const userCredential = await signInWithEmailAndPassword(auth, email, senha);
       const user = userCredential.user;
-      console.log("Usuário logado", user);
-      navigation.navigate("HomeScreen");
+      console.log("Usuário logado:", user);
+      navigation.navigate("HomeScreen"); // Navegar para a HomeScreen após o login
     } catch (error) {
       console.error("Erro ao fazer login:", error.message);
+      Alert.alert("Erro de Login", "Não foi possível fazer login. Verifique suas credenciais.");
     }
   }
 
-  // Função para login com Google
+  async function handleGoogleLogin() {
+    const provider = new GoogleAuthProvider();
+
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log("Usuário logado com Google:", user);
+      navigation.navigate("HomeScreen"); // Navegar para a HomeScreen após login com Google
+    } catch (error) {
+      console.error("Erro ao fazer login com Google:", error.message);
+      Alert.alert("Erro de Login com Google", "Não foi possível fazer login com sua conta Google.");
+    }
+  }
 
   return (
-    <Surface>
+    <Surface style={styles.container}>
       <View style={styles.Containerlogo}>
-        {/* Utilizar uma imagem no Expo ou uma alternativa apropriada */}
+        {}
         <div>
           <img
-            src="assets/logo1.png"
+            src="assets/img/logo1.png"
             style={{ textAlign: "center" }}
             width={"100%"}
+            alt="logo"
           />
         </div>
       </View>
@@ -84,6 +94,17 @@ export default function LoginScreen({ navigation }) {
           >
             Fazer Login
           </Button>
+        </View>
+
+        <View>
+          <Button
+            onPress={handleGoogleLogin}
+            mode="contained"
+            style={{ backgroundColor: "#db4437", marginTop: 10 }}
+          >
+            Login com Google
+          </Button>
+          
         </View>
 
         <Button
