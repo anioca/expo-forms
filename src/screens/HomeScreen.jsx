@@ -27,13 +27,13 @@ export default function HomeScreen({ navigation, route }) {
     },
     {
       id: '3',
-      title: "Arraiá Senac",
+      title: "Colação Senac",
       subtitle: "Faculdade Senac, Joinville",
-      image: "assets/img/arraia.png",
-      date: "12 de julho de 2024",
-      description: "Vai ter festança boa demais no Senac! Prepare o seu chapéu de palha e venha se divertir.",
-      icon: "corn",
-      moreInfo: "Teremos barracas de comidas típicas, quadrilha, brincadeiras tradicionais, música ao vivo.",
+      image: "assets/img/gra.webp",
+      date: "19 de dezembro de 2024",
+      description: "A colação está chegando no Colégio! Prepare sua beca e venha celebrar esse grande momento.",
+      icon: "party-popper",
+      moreInfo: "Teremos a entrega de diplomas, discursos emocionantes, homenagens e muita celebração para marcar essa conquista especial.",
     },
   ]);
 

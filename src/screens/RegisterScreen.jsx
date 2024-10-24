@@ -1,8 +1,9 @@
-import { View, Image, Alert } from "react-native";
+import { View, Image, TouchableOpacity, Alert } from "react-native";
 import { Button, Surface, Text, TextInput } from "react-native-paper";
 import { useState } from "react";
 import { styles } from "../config/styles";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { FontAwesome } from 'react-native-vector-icons';
 import { auth } from "../config/firebase";
 
 export default function RegisterScreen({ navigation }) {
@@ -81,13 +82,9 @@ export default function RegisterScreen({ navigation }) {
     <Surface style={styles.container}>
       <View style={styles.innerContainer}>
         <View style={styles.ContainerForm1}>
-          <Text variant="headlineMedium" style={{ textAlign: "center", marginBottom: 20 }}>
+          <Text variant="headlineMedium" style={{ textAlign: "center", marginBottom: 20, marginTop:40 }}>
             Faça seu Registro
           </Text>
-          <Image
-            source={{ uri: "path_to_your_logo.png" }}  // Substitua 'path_to_your_logo.png' com o caminho correto
-            style={{ width: 100, height: 100, marginBottom: 20 }}
-          />
           <TextInput
             placeholder="Digite seu nome"
             value={nome}
@@ -125,14 +122,16 @@ export default function RegisterScreen({ navigation }) {
             style={styles.input}
             error={erro.escola}
           />
-          <Button onPress={realizaRegistro} style={{ backgroundColor: "#a547bf" }} mode="outlined">
+          <View>
+         <Button onPress={realizaRegistro} style={{ backgroundColor: "#a547bf", marginTop:30 }} mode="contained">
             Registrar
           </Button>
-
-          <Button onPress={handleGoogleRegister} style={{ backgroundColor: "#db4437", marginTop: 10 }} mode="outlined">
-            Registrar com Google
-          </Button>
-
+          </View>
+          <View>
+         <TouchableOpacity style={styles.googleButton} onPress={handleGoogleRegister}>
+          <FontAwesome name="google" size={24} color="#8a0b07" />
+         </TouchableOpacity>
+          </View>
           <Button onPress={() => navigation.navigate("LoginScreen")} style={{ marginTop: 20 }}>
             Voltar ao login
           </Button>

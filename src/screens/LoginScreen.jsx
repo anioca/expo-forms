@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { View, Alert } from "react-native";
+import { View, TouchableOpacity, Alert } from "react-native";
 import { Button, Surface, Text, TextInput } from "react-native-paper";
 import { styles } from "../config/styles";
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { FontAwesome } from 'react-native-vector-icons';
 import { auth } from "../config/firebase";
 
 export default function LoginScreen({ navigation }) {
@@ -67,7 +68,7 @@ export default function LoginScreen({ navigation }) {
       <View style={styles.ContainerForm}>
         <Text
           variant="headlineMedium"
-          style={{ textAlign: "center", marginBottom: 20 }}
+          style={{ textAlign: "center", marginBottom: 20, marginTop:50  }}
         >
           Login
         </Text>
@@ -97,14 +98,9 @@ export default function LoginScreen({ navigation }) {
         </View>
 
         <View>
-          <Button
-            onPress={handleGoogleLogin}
-            mode="contained"
-            style={{ backgroundColor: "#db4437", marginTop: 10 }}
-          >
-            Login com Google
-          </Button>
-          
+      <TouchableOpacity style={styles.googleButton} onPress={handleGoogleLogin}>
+        <FontAwesome name="google" size={24} color="#8a0b07" />
+      </TouchableOpacity>
         </View>
 
         <Button

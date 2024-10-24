@@ -76,19 +76,20 @@ export default function PixScreen({ navigation }) {
         />
         <View style={styles.radioGroup}>
           <Button
-            mode={pixType === 'send' ? 'contained' : 'outlined'}
+            mode={'contained' }
             onPress={() => setPixType('send')}
-            style={[styles.radioButton, pixType === 'send' && styles.radioButtonActive]}
-            color={pixType === 'send' ? '#fff' : '#a547bf'} 
+            style={[styles.radioButton, styles.radioButtonActive]}
+            color="#fff" 
           >
             Enviar
           </Button>
+
           <Button
-            mode={pixType === 'receive' ? 'contained' : 'outlined'}
+            mode={ 'contained'}
             onPress={() => setPixType('receive')}
-            style={[styles.radioButton, styles.radioButtonReceive, pixType === 'receive' && styles.radioButtonActive]}
-            color={pixType === 'receive' ? '#fff' : '#a547bf'} 
-            contentStyle={styles.buttonContent} 
+            style={[styles.radioButton, styles.radioButtonActive ]}
+            color="#fff" 
+
           >
             Receber
           </Button>

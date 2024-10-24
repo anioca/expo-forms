@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: "100%",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#a547bf",
@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   Containerlogo: {
-    flex: 1,
+    height: 250,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -57,4 +57,7 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: "black",
   },
+  googleButton: {
+    marginTop: 20,
+  }
 });
