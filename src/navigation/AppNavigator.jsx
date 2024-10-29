@@ -12,7 +12,8 @@ import PixScreen from "../screens/PixScreen";
 import TransferirScreen from "../screens/TransferirScreen";
 import PagarScreen from "../screens/PagarScreen";
 import ConfiguraçãoScreen from "../screens/ConfiguraçãoScreen";
-import ChatScreens from "../screens/ChatScreens"
+import ChatScreens from "../screens/ChatScreens";
+import ScannerScreen from "../screens/ScannerScreen";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 
 const Stack = createNativeStackNavigator();
@@ -86,13 +87,7 @@ export default function AppNavigator() {
             title: "Pix",
           }}
         />
-        <Stack.Screen
-          name="PagarScreen"
-          component={PagarScreen}
-          options={{
-            title: "Pagar",
-          }}
-        />
+       
         <Stack.Screen
           name="TransferirScreen"
           component={TransferirScreen}
@@ -112,6 +107,13 @@ export default function AppNavigator() {
           component={ChatScreens}
           options={{
             title: "Chat",
+          }}
+        />
+        <Stack.Screen
+          name="ScannerScreen"
+          component={ScannerScreen}
+          options={{
+            headerShown: false,
           }}
         />
       </Stack.Navigator>

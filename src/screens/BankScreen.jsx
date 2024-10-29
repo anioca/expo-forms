@@ -43,7 +43,7 @@ export default function BankScreen({ navigation }) {
           <Button mode="text" icon="bank-transfer" onPress={() => navigation.navigate("PixScreen")}>
             Área Pix
           </Button>
-          <Button mode="text" icon="barcode" onPress={() => navigation.navigate("PagarScreen")}>
+          <Button mode="text" icon="barcode" onPress={() => navigation.navigate("ScannerScreen")}>
             Pagar
           </Button>
           <Button mode="text" icon="arrow-right-bold" onPress={() => navigation.navigate("TransferirScreen")}>
